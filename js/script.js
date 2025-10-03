@@ -10,3 +10,27 @@ let bouquets = [
 ];
 
 let orderItems = [];
+
+function bouquetCatalog() {
+    const catalogContainer = document.getElementById('bouquet-catalog');
+
+    bouquets.forEach(bouquet => {
+        const bouquetCard = document.createElement('div');
+        bouquetCard.className = 'bouquet-card';
+
+        bouquetCard.innerHTML = `
+                    <div class="bouquet-image">
+                        <img src="${bouquet.image}" alt="" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOGY4Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2FhYSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPiR7Ym91cXVldC5uYW1lfTwvdGV4dD48L3N2Zz4='">
+                    </div>
+                    <div class="bouquet-info">
+                        <h3 class="bouquet-name">${bouquet.name}</h3>
+                        <div class="bouquet-price">${bouquet.price} руб.</div>
+                        <button class="order-btn" data-id="${bouquet.id}">Заказать</button>
+                    </div>
+                `;
+
+        catalogContainer.appendChild(bouquetCard);
+    });
+};
+
+bouquetCatalog();
